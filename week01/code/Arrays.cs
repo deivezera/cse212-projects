@@ -12,8 +12,17 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        double [] arr = new double[length];
 
-        return []; // replace this return statement with your own
+        for (var i = 1; i <=  length; i++) {
+            //First we make a for loop with the 'i' value starting on one, because we discard the 0 to find multiples
+            // Then we multiply every i for the number we want multiples, like 5*1 5*2 5*3...
+            // and we put it in the correct position of the array from 0 to length
+            arr[i - 1] = number * i;
+        }
+
+        // then we return the array with the multiples of number
+        return arr; // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +38,20 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        //This is to avoid edge cases for errors
+        if (data == null || data.Count <= 1 || amount % data.Count == 0)
+        return;
+
+
+        //We need first to normalize the amount to avoid rotate the array several times.
+        amount = amount % data.Count;
+
+        //first we use GetRange to identify which values will be moved to the front
+        List<int> temp = data.GetRange(data.Count - amount, amount);
+        //then we cut the list where the values that will be moved are
+        data.RemoveRange(data.Count - amount, amount);
+        //then we insert the new values before the ones that were first
+        data.InsertRange(0, temp);
     }
 }
