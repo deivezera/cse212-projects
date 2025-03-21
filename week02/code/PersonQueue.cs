@@ -23,7 +23,7 @@ public class PersonQueue
 
     public bool IsEmpty()
     {
-        return Length == 0;
+        return _queue.Count == 0;
     }
 
     public override string ToString()
