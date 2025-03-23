@@ -24,17 +24,16 @@ public class Translator
     /// <returns>fixed array of divisors</returns>
     public void AddWord(string fromWord, string toWord)
     {
-        // ADD YOUR CODE HERE
+        _words[fromWord] = toWord;
     }
 
     /// <summary>
-    /// Translates the from word into the word that this stores as the translation
+    /// Translates the fromWord into the corresponding translated word.
     /// </summary>
     /// <param name="fromWord">The word to translate</param>
     /// <returns>The translated word or "???" if no translation is available</returns>
     public string Translate(string fromWord)
     {
-        // ADD YOUR CODE HERE
-        return "";
+        return _words.TryGetValue(fromWord, out string translation) ? translation : "???";
     }
 }
